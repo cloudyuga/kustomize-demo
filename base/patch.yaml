@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp 
+spec:
+  template:
+    spec:
+      containers:
+      - name: rsvp-app
+        env:
+        - name: MONGODB_HOST 
+          value: $(MONGODB_HOST)
