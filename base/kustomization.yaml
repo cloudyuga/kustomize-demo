@@ -1,3 +1,7 @@
 resources:
 - backend
 - frontend
+commonLabels:
+  demo: online 
+commonAnnotations:
+  meetup: First Kubernetes & CNCF Online Meetup 
