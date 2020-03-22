@@ -1,6 +1,8 @@
 bases:
 - ../../base
 namePrefix: staging-
+commonLabels:
+  env: staging
 patchesStrategicMerge:
 - staging-configmap.yaml 
 configMapGenerator:

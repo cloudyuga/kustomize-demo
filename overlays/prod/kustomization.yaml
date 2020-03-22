@@ -1,6 +1,8 @@
 bases:
 - ../../base
 namePrefix: prod-
+commonLabels:
+  env: prod
 patchesStrategicMerge:
 - staging-configmap.yaml 
 - replica-count.yaml
