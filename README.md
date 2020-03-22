@@ -4,14 +4,14 @@
 ### Deploys the app from single `yaml` file
 
 ```
-git checkout 1-orignal-app
+$ git checkout 1-orignal-app
 kubectl apply -f rsvp.yaml
 ```
 
 ### Access the application
 
 ```
-kubectl get svc
+$ kubectl get svc
 ```
 ```
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
@@ -20,8 +20,13 @@ mongodb      ClusterIP   10.107.208.233   <none>        27017/TCP      14s
 rsvp         NodePort    10.102.228.221   <none>        80:32037/TCP   15s
 ```
 
-### Access the Application
+### Access the application
 ```
-open http://localhost:32037
+$ open http://localhost:32037
+```
+
+### Delete the application
+```
+$ kubectl delete -f rsvp.yaml
 ```
 
