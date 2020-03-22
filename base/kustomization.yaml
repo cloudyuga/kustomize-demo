@@ -6,3 +6,11 @@ commonLabels:
 commonAnnotations:
   meetup: First Kubernetes & CNCF Online Meetup 
 namePrefix: meetup-
+patchesStrategicMerge:
+- patch.yaml
+vars:
+  - name: MONGODB_HOST
+    objref:
+      kind: Service
+      name: mongodb
+      apiVersion: v1
