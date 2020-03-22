@@ -5,3 +5,4 @@ commonLabels:
   demo: online 
 commonAnnotations:
   meetup: First Kubernetes & CNCF Online Meetup 
+namePrefix: meetup-
