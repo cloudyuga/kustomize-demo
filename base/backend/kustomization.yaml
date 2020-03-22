@@ -1,0 +1,3 @@
+resources:
+- backend.yaml
+- backend-svc.yaml

@@ -1,0 +1,3 @@
+resources:
+- frontend.yaml
+- frontend-svc.yaml

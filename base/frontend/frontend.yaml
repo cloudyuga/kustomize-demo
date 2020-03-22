@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: rsvp
+  template:
+    metadata:
+      labels:
+        app: rsvp
+    spec:
+      containers:
+      - name: rsvp-app
+        image: nkhare/rsvpapp
+        imagePullPolicy: Always
+        env:
+        - name: MONGODB_HOST
+          value: mongodb
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5000
+          periodSeconds: 30
+          timeoutSeconds: 1
+          initialDelaySeconds: 50
+        ports:
+        - containerPort: 5000
+          name: web-port
