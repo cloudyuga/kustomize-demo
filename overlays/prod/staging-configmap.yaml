@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rsvp
+spec:
+  template:
+    spec:
+      containers:
+      - name: rsvp-app
+        env:
+        - name: TEXT1 
+          valueFrom:
+            configMapKeyRef:
+              name: rsvpconfig-staging
+              key: TEXT1
+        - name: TEXT2 
+          valueFrom:
+            configMapKeyRef:
+              name: rsvpconfig-staging
+              key: TEXT2

@@ -1,0 +1,11 @@
+bases:
+- ../../base
+namePrefix: prod-
+patchesStrategicMerge:
+- staging-configmap.yaml 
+- replica-count.yaml
+configMapGenerator:
+- name: rsvpconfig-staging
+  literals:
+    - TEXT1="Welcome to"
+    - TEXT2="Production"
