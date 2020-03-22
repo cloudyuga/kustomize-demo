@@ -1,3 +1,10 @@
 bases:
 - ../../base
 namePrefix: staging-
+patchesStrategicMerge:
+- staging-configmap.yaml 
+configMapGenerator:
+- name: rsvpconfig-staging
+  literals:
+    - TEXT1="Welcome to"
+    - TEXT2="Staging"
