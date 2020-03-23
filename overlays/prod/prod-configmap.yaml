@@ -11,10 +11,10 @@ spec:
         - name: TEXT1 
           valueFrom:
             configMapKeyRef:
-              name: rsvpconfig-staging
+              name: rsvpconfig-prod
               key: TEXT1
         - name: TEXT2 
           valueFrom:
             configMapKeyRef:
-              name: rsvpconfig-staging
+              name: rsvpconfig-prod
               key: TEXT2

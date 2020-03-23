@@ -5,7 +5,7 @@ patchesStrategicMerge:
 - prod-configmap.yaml 
 - replica-count.yaml
 configMapGenerator:
-- name: rsvpconfig-staging
+- name: rsvpconfig-prod
   literals:
     - TEXT1="Welcome to"
     - TEXT2="Production"
