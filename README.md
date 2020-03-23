@@ -26,7 +26,7 @@ Here we have a `overlays` folder, in-parallel to the `base` folder. With-in that
 Inside the `staging` folder we have `kustomization.yaml` file whose content is as following:-
 
 ```
-bases:
+resources:
 - ../../base
 namePrefix: staging-
 ```
