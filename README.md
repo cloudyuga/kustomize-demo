@@ -154,8 +154,7 @@ NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        32m
 mongodb      ClusterIP   10.98.57.104    <none>        27017/TCP      5m46s
 rsvp         NodePort    10.99.194.245   <none>        80:32412/TCP   5m46s
-``
-
+```
 ```
 $ open http://localhost:32412
 ```
