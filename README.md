@@ -6,10 +6,10 @@ To fix the `Label/Selector` issue we have seen in the last section, we need to a
 
 ### Add a `env=staging` `Label`, while deploying app in `staging` environment
 ```
-Neependra:kustomize-demo neependra$ cat overlays/staging/kustomization.yaml
+$ cat overlays/staging/kustomization.yaml
 ```
 ```
-bases:
+resources:
 - ../../base
 namePrefix: staging-
 commonLabels:
@@ -25,9 +25,10 @@ configMapGenerator:
 
 ### Add a `env=prod` `Label`, while deploying app in `prod` environment
 ```
-Neependra:kustomize-demo neependra$ cat overlays/prod/kustomization.yaml
+$ cat overlays/prod/kustomization.yaml
 ```
-bases:
+```
+resources:
 - ../../base
 namePrefix: prod-
 commonLabels:
@@ -44,7 +45,7 @@ configMapGenerator:
 
 ### Deploy the applications for `staging` and `prod` environments
 ```
-Neependra:kustomize-demo neependra$ kustomize build overlays/staging/ | kubectl apply -f -
+$ kustomize build overlays/staging/ | kubectl apply -f -
 ```
 ```
 configmap/staging-rsvpconfig-staging-9c2f82kg64 configured
@@ -54,7 +55,7 @@ deployment.apps/staging-meetup-rsvp created
 deployment.apps/staging-meetup-rsvp-db created
 ```
 ```
-Neependra:kustomize-demo neependra$ kustomize build overlays/prod/ | kubectl apply -f -
+$ kustomize build overlays/prod/ | kubectl apply -f -
 ```
 configmap/prod-rsvpconfig-staging-m42dtkmhfh created
 service/prod-meetup-mongodb created
@@ -65,7 +66,7 @@ deployment.apps/prod-meetup-rsvp-db created
 
 ### Access the applications
 ```
-Neependra:kustomize-demo neependra$ kubectl get svc
+$ kubectl get svc
 ```
 ```
 NAME                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
@@ -86,7 +87,7 @@ open http://localhost:31761
 
 ### Delete the applications
 ```
-Neependra:kustomize-demo neependra$ kustomize build overlays/prod |  kubectl delete -f -
+$ kustomize build overlays/prod |  kubectl delete -f -
 ```
 ```
 configmap "prod-rsvpconfig-staging-m42dtkmhfh" deleted
@@ -96,7 +97,7 @@ deployment.apps "prod-meetup-rsvp" deleted
 deployment.apps "prod-meetup-rsvp-db" deleted
 ```
 ```
-Neependra:kustomize-demo neependra$ kustomize build overlays/staging |  kubectl delete -f -
+$ kustomize build overlays/staging |  kubectl delete -f -
 ```
 ```
 configmap "staging-rsvpconfig-staging-9c2f82kg64" deleted
