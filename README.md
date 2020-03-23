@@ -54,7 +54,7 @@ spec:
 $ cat overlays/staging/kustomization.yaml
 ```
 ```
-bases:
+resources:
 - ../../base
 namePrefix: staging-
 patchesStrategicMerge:
@@ -221,7 +221,7 @@ $ open http://localhost:30146
 You might have noticed additional hash value after the `configMap` name, `staging-rsvpconfig-staging-9c2f82kg64`. `Kustomizes` changes this everytime we update the `configMap`, which triggers the re-deployment of the application. So let's change `configMap` configuration in the `overlays/staging/kustomization.yaml` and re-deploy the application. 
 
 ```
-bases:
+resources:
 - ../../base
 namePrefix: staging-
 patchesStrategicMerge:
