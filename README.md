@@ -57,6 +57,7 @@ deployment.apps/staging-meetup-rsvp-db created
 ```
 $ kustomize build overlays/prod/ | kubectl apply -f -
 ```
+```
 configmap/prod-rsvpconfig-staging-m42dtkmhfh created
 service/prod-meetup-mongodb created
 service/prod-meetup-rsvp created
