@@ -23,7 +23,7 @@ spec:
 $ cat overlays/prod/kustomization.yaml
 ```
 ```
-bases:
+resources:
 - ../../base
 namePrefix: prod-
 patchesStrategicMerge:
