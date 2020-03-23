@@ -30,7 +30,7 @@ patchesStrategicMerge:
 - prod-configmap.yaml
 - replica-count.yaml
 configMapGenerator:
-- name: rsvpconfig-staging
+- name: rsvpconfig-prod
   literals:
     - TEXT1="Welcome to"
     - TEXT2="Production"
@@ -39,7 +39,6 @@ configMapGenerator:
 We have updated the `configMap`
 
 ### Build the `YAML` file
-
 ```
 $ kustomize build overlays/prod/
 ```
@@ -50,7 +49,7 @@ data:
   TEXT2: Production
 kind: ConfigMap
 metadata:
-  name: prod-rsvpconfig-staging-m42dtkmhfh
+  name: prod-rsvpconfig-prod-dg95d4m5fk
 ---
 apiVersion: v1
 kind: Service
@@ -116,12 +115,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: TEXT1
-              name: prod-rsvpconfig-staging-m42dtkmhfh
+              name: prod-rsvpconfig-prod-dg95d4m5fk
         - name: TEXT2
           valueFrom:
             configMapKeyRef:
               key: TEXT2
-              name: prod-rsvpconfig-staging-m42dtkmhfh
+              name: prod-rsvpconfig-prod-dg95d4m5fk
         - name: MONGODB_HOST
           value: prod-meetup-mongodb
         image: nkhare/rsvpapp
@@ -166,13 +165,12 @@ spec:
         ports:
         - containerPort: 27017
 ```
-
 ### Deploy the application from the `prod` environment
 ```
 $ kustomize build overlays/prod/ | kubectl apply -f -
 ```
 ```
-configmap/prod-rsvpconfig-staging-m42dtkmhfh unchanged
+configmap/prod-rsvpconfig-prod-m42dtkmhfh unchanged
 service/prod-meetup-mongodb created
 service/prod-meetup-rsvp created
 deployment.apps/prod-meetup-rsvp created
@@ -221,6 +219,7 @@ deployment.apps/staging-meetup-rsvp-db created
 ### Access the application from the `staging` environment
 ```
 $ kubectl get svc
+```
 ```
 NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 kubernetes               ClusterIP   10.96.0.1        <none>        443/TCP        19h
@@ -296,7 +295,7 @@ deployment.apps "staging-meetup-rsvp-db" deleted
 $ kustomize build overlays/prod |  kubectl delete -f -
 ```
 ```
-configmap "prod-rsvpconfig-staging-m42dtkmhfh" deleted
+configmap "prod-rsvpconfig-prod-m42dtkmhfh" deleted
 service "prod-meetup-mongodb" deleted
 service "prod-meetup-rsvp" deleted
 deployment.apps "prod-meetup-rsvp" deleted
